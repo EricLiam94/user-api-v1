@@ -21,8 +21,9 @@ pipeline {
             agent any
             steps{
              echo "start building in ${env.BUILD_ID}"
+             sh "ls ."
              script {
-                def image = docker.build("ericfox/user-api:${env.BUILD_ID}")
+                def image = docker.build("ericfox/user-api-v1:${env.BUILD_ID}")
                 docker.withRegistry('',"docker_hub_id"){
                     image.push()
                 }
