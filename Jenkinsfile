@@ -20,9 +20,9 @@ pipeline {
         stage("Publish"){
             agent any
             steps{
-             echo "start building in {env.BUILD_ID}"
+             echo "start building in ${env.BUILD_ID}"
              script {
-                def image = docker.build("ericfox/user-api:{env.BUILD_ID}")
+                def image = docker.build("ericfox/user-api:${env.BUILD_ID}")
                 docker.withRegistry('',"docker_hub_id"){
                     image.push()
                 }
