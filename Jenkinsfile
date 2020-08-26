@@ -9,9 +9,10 @@ pipeline {
         }
 
         stages("Publish"){
+        steps{
          echo "start building"
         }
-
+}
 
     }
 }
